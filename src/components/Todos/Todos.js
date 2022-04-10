@@ -6,7 +6,7 @@ import {useAuth} from '../../contexts/AuthContext'
 import TodoCreate from './TodoCreate';
 
 export default function Todos() {
-  const [todos, settodos] = useState([]);
+  const [todos, setTodos] = useState([]);
   const [showCreate, setShowCreate] = useState(false);
   const {currentUser} = useAuth()
 
@@ -15,7 +15,7 @@ export default function Todos() {
 
     axios.get('http://localhost:62103/api/todo').then(response => {
       console.log(response)
-      settodos(response.data)
+      setTodos(response.data)
     })
   }
 
@@ -45,7 +45,8 @@ export default function Todos() {
           {todos.map(x =>
             <SingleTodo 
             key={x.ToDoId}
-            todo={x} />
+            todo={x} 
+            getTodos = {getTodos}/>
           )}
           </article>
         </Container>

@@ -15,16 +15,28 @@ export default function TodoForm(props) {
             const todoToCreate = {
                 Action: values.Action,
                 Description: values.Description,
+                Done: false,
                 CategoryId: values.CategoryId
             }
 
             axios.post('http://localhost:62103/api/todo/', todoToCreate).then(() => {
-                props.getTodo();
+                props.getTodos();
                 props.setShowCreate(false);
             })
         }
         else{
-            console.log('edit mode')
+            //console.log('edit mode')
+            const todoToEdit = {
+                ToDoId: props.todo.ToDoId,
+                Action: values.Action,
+                Description: values.Description,
+                CategoryId: values.CategoryId
+            }
+            console.log(todoToEdit)
+            axios.put('http://localhost:62103/api/todo/', todoToEdit).then(() => {
+                props.getTodos()
+                props.setShowEdit(false)
+            })
         }
     }
 

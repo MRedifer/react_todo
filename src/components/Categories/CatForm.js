@@ -20,8 +20,17 @@ const handleSubmit = (values) => {
       })
     }
     else{
-      console.log('edit mode')
+      const catToEdit ={
+        CategoryId: props.category.CategoryId,
+        CategoryName: values.CategoryName,
+        CategoryDescription: values.CategoryDescription
+      }
+        axios.put('http://localhost:62103/api/categories/', catToEdit).then(() => {
+          props.getCategories();
+          props.setShowEdit(false);
+        })
     }
+
 }
 
   return (

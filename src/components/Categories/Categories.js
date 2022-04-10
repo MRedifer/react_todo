@@ -33,7 +33,6 @@ export default function Categories() {
                         <button onClick={() => setShowCreate(false)} className='btn btn-warning'>
                             Cancel
                         </button>
-                        {/* STEP ^ (CREATE) - Render the CatCreate */}
                         <CatCreate
                             setShowCreate={setShowCreate}
                             getCategories={getCategories} />
@@ -50,6 +49,9 @@ export default function Categories() {
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
+                        {currentUser.email === process.env.REACT_APP_EMAIL_ADMIN && 
+                            <th>User Actions</th>
+                        }
                     </tr>
                 </thead>
                 <tbody>
@@ -57,7 +59,8 @@ export default function Categories() {
                     {categories.map(x => 
                         <SingleCategory 
                             key={x.CategoryId}
-                            category={x} />
+                            category={x} 
+                            getCategories={getCategories}/>
                         )}
                 </tbody>
             </table>

@@ -6,7 +6,7 @@ export default function TodoCreate(props) {
     <article className='m-2 text-white justify-content-center'>
         <TodoForm
             setShowCreate={props.setShowCreate}
-            getTodos={props.getTodo}  />
+            getTodos={props.getTodos}  />
     </article>
   )
 }
