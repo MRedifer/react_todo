@@ -12,7 +12,7 @@ export default function Categories() {
     const [showCreate, setShowCreate] = useState(false);
 
     const getCategories = () => {
-        axios.get('http://localhost:62103/api/categories').then(response => {
+        axios.get('http://todoapi.michaelredifer.com/api/categories/').then(response => {
             setCategories(response.data)
         })
     }
@@ -23,21 +23,21 @@ export default function Categories() {
     }, []);
   return (
     <section className=''>
-        <article className='bg-info p-5'>
+        <article className='bg-danger p-5'>
             <h1 className='text-center'>Categories Dashboard</h1>
         </article>
         {currentUser.email === process.env.REACT_APP_EMAIL_ADMIN &&
             <div className='bg-dark p-2 mb-3 text-center'>
                 {showCreate ? 
                     <>
-                        <button onClick={() => setShowCreate(false)} className='btn btn-warning'>
+                        <button onClick={() => setShowCreate(false)} className='btn btn-info'>
                             Cancel
                         </button>
                         <CatCreate
                             setShowCreate={setShowCreate}
                             getCategories={getCategories} />
                     </> :
-                    <button onClick={() => setShowCreate(true)} className='btn btn-info'>
+                    <button onClick={() => setShowCreate(true)} className='btn btn-danger'>
                         Create New Category
                     </button>
                 }

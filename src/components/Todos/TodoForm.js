@@ -19,7 +19,7 @@ export default function TodoForm(props) {
                 CategoryId: values.CategoryId
             }
 
-            axios.post('http://localhost:62103/api/todo/', todoToCreate).then(() => {
+            axios.post('http://todoapi.michaelredifer.com/api/todo/', todoToCreate).then(() => {
                 props.getTodos();
                 props.setShowCreate(false);
             })
@@ -33,7 +33,7 @@ export default function TodoForm(props) {
                 CategoryId: values.CategoryId
             }
             console.log(todoToEdit)
-            axios.put('http://localhost:62103/api/todo/', todoToEdit).then(() => {
+            axios.put('http://todoapi.michaelredifer.com/api/todo/', todoToEdit).then(() => {
                 props.getTodos()
                 props.setShowEdit(false)
             })
@@ -77,7 +77,7 @@ export default function TodoForm(props) {
                         </Field>
                     </div>
                     <div className='form-group m-3'>
-                        <button type='submit' className='btn btn-info m-3'>Submit Resource to API</button>
+                        <button type='submit' className='btn btn-info m-3'>Submit ToDo to API</button>
                     </div>
                 </div>
             </Form>

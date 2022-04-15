@@ -14,7 +14,7 @@ const handleSubmit = (values) => {
         CategoryDescription: values.CategoryDescription
       }
 
-      axios.post('http://localhost:62103/api/categories/', catToCreate).then(() => {
+      axios.post('http://todoapi.michaelredifer.com/api/categories/', catToCreate).then(() => {
         props.setShowCreate(false)
         props.getCategories()
       })
@@ -23,9 +23,10 @@ const handleSubmit = (values) => {
       const catToEdit ={
         CategoryId: props.category.CategoryId,
         CategoryName: values.CategoryName,
-        CategoryDescription: values.CategoryDescription
+        CategoryDescription: values.CategoryDescription,
+        Done: values.Done
       }
-        axios.put('http://localhost:62103/api/categories/', catToEdit).then(() => {
+        axios.put('http://todoapi.michaelredifer.com/api/categories/', catToEdit).then(() => {
           props.getCategories();
           props.setShowEdit(false);
         })
