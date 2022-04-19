@@ -17,10 +17,11 @@ export default function SingleTodo(props) {
   
   const flipToDo = () => {
     const todoToFlip = {
-      Action: props.Action,
-      Description: props.Description,
-      Done: !props.Done,
-      CategoryId: props.CategoryId
+      ToDoId: props.todo.ToDoId,
+      Action: props.todo.Action,
+      Description: props.todo.Description,
+      Done: !props.todo.Done,
+      CategoryId: props.todo.CategoryId
   }
   console.log(todoToFlip)
     axios.put(`http://todoapi.michaelredifer.com/api/todo/`, todoToFlip).then(() => {props.getTodos()})
@@ -41,9 +42,8 @@ export default function SingleTodo(props) {
           <button id='deleteLink' onClick={() => deleteTodo(props.todo.ToDoId)}>
             <FontAwesomeIcon icon={['fas', 'trash-alt']} />
           </button>
-          {!props.todo.Done ?
-          <input type='checkbox' onClick={() => flipToDo()}></input> :
-          <input type='checkbox' checked onClick={() => flipToDo()}></input>
+          {
+          <input type='checkbox' checked={props.todo.Done} onChange={() => flipToDo()} />
           }
           {showEdit && 
             <TodoEdit
